@@ -8,7 +8,16 @@ export default class MessageList extends Component {
     messageList: PropTypes.array
   }
   render() {
-    const {messageList} = this.props
+    const {messageList,roomId} = this.props
+    if(!roomId){
+      return (
+        <div className="message-list">
+          <div className="join-room">
+            &larr; Join a room!
+          </div>
+        </div>
+      )
+    }
     return (
       <div className="message-list">
         {messageList.map(message=>{

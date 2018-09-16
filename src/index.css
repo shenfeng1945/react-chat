@@ -73,14 +73,14 @@ html, body {
   color: var(--secondary-color);
 }
 
-.rooms-list .room a {
+.rooms-list .room {
   color: var(--secondary-text-color);
   font-weight: 600;
   text-decoration: none;
   
 }
 
-.rooms-list .room.active a {
+.rooms-list .room.active {
   color: var(--secondary-color);
 }
 
