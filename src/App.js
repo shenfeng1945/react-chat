@@ -65,7 +65,17 @@ class App extends Component {
     .catch(err=>{console.log('error on subscribing to a room ',err)})
   }
   sendMessage(text){
-     this.currentUser.sendMessage({text,roomId: this.currentUser.rooms[0].id,})
+     this.currentUser.sendMessage({text,roomId: this.state.roomId})
+  }
+  
+  createRoom(name){
+     this.currentUser.createRoom({
+       name
+     })
+     .then(room=>{
+        this.subscribeToRoom(room.id)
+     })
+     .catch(err=>{console.log('error on create new room ',err)})
   }
 
   render() {
@@ -76,7 +86,7 @@ class App extends Component {
                   subscribeToRoom={this.subscribeToRoom.bind(this)}/>
         <MessageList messageList={this.state.messageList} roomId={this.state.roomId}/>
         <SendMessageForm sendMessage={this.sendMessage.bind(this)}/>
-        <NewRoomForm />
+        <NewRoomForm createRoom={this.createRoom.bind(this)} />
       </div>
     );
   }
