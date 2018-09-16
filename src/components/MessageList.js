@@ -10,13 +10,14 @@ export default class MessageList extends Component {
   }
   componentWillUpdate(){
     const node = ReactDom.findDOMNode(this)
-    this.shouldScrollToBottom = (node.scrollTop+node.clientHeight+100)>=node.scrollHeight
+    this.shouldScrollToBottom = (node.scrollTop + node.clientHeight + 100 )>= node.scrollHeight;
   }
   componentDidUpdate(){
-    // if(this.shouldComponentUpdate){
-      // node.scrollTop = node.scrollHeight
-    // }
-  }
+    if(this.shouldComponentUpdate){
+        const node = ReactDom.findDOMNode(this)
+        node.scrollTop = node.scrollHeight
+    }
+ }
   render() {
     const {messageList,roomId} = this.props
     if(!roomId){
